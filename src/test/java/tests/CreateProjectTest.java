@@ -2,6 +2,7 @@ package tests;
 
 import models.Project;
 import models.User;
+import net.bytebuddy.build.Plugin;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.LoginPageService;
@@ -12,8 +13,8 @@ import java.util.Locale;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "project";
-    private String code = "data123";
+    private String projectName = "proje1ct";
+    private String code = "data2123";
     private String email = "pasha_polyakov8@mail.ru";
     private String password = "Romehu82";
     Project project = Project.builder()
@@ -30,7 +31,9 @@ public class CreateProjectTest extends BaseTest{
     private LoginPageService loginPageService = new LoginPageService();
     private RepositoryPageService repositoryPageService = new RepositoryPageService();
 
-    @Test
+
+
+    @Test(priority = 1)
     public void crateNewProjectTest() {
         loginPageService.login(user);
         projectsPageService.createNewProject(project);
@@ -41,7 +44,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertEquals(actual,expected.toLowerCase(),"Not equals");
     }
 
-    @Test
+    @Test(priority = 2)
     public void searchForProject(){
         loginPageService.login(user);
         String searchProjectName = projectName;
@@ -51,7 +54,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertEquals(actual,expected,"No such project");
     }
 
-    @Test
+    @Test(priority = 3)
     public void searchForNotExistingProject(){
         loginPageService.login(user);
         String searchProjectName = "Some text";
@@ -59,7 +62,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertTrue(projectsPageService.noSuchProjectTextIsDisplayed());
     }
 
-    @Test
+    @Test(priority = 5)
     public void deleteProject(){
         loginPageService.login(user);
         String searchProjectName = projectName;
@@ -70,7 +73,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertFalse(expected, "Project was not deleted");
     }
 
-    @Test
+    @Test(priority = 4)
     public void searchForNotExistingProjectTest(){
         loginPageService.login(user);
         String searchProjectName = "NOT_EXISTING_PROJECT_NAME";

@@ -2,6 +2,7 @@ package tests;
 
 import models.User;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,7 +19,6 @@ public class LoginTest extends BaseTest{
             .build();
     private LoginPageService loginPageService = new LoginPageService();
     private BaseMenuPageService baseMenuPageService = new BaseMenuPageService();
-
 
     @Test
     public void loginTest(){

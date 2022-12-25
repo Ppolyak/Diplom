@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class BaseMenuPage extends BasePage{
 
-    @FindBy(xpath = "//img[@class='X8BNLp']")
+    @FindBy(xpath = "//span[@class='Eb2vGG']")
     private WebElement profileIcon;
 
     @FindBy(xpath = "//*[contains(text(),'Sign')] ")
