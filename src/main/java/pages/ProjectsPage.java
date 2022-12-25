@@ -19,6 +19,8 @@ public class ProjectsPage extends BaseMenuPage{
     private WebElement projectNameField;
     @FindBy(xpath = "//input[@id='project-code']")
     private WebElement projectCodeField;
+    @FindBy(xpath = "//a[@class='defect-title']")
+    private WebElement projectNameOnProjectsList;
     @FindBy(xpath = "//button[@class='LzLtDS tscvgR MBIQEc']/*[contains(text(),'Create project')]")
     private WebElement createProjectButtonInPopup;
     @FindBy(xpath = "//tr[@class='project-row']/descendant::a[@class='btn btn-dropdown']")
@@ -36,8 +38,7 @@ public class ProjectsPage extends BaseMenuPage{
     /*private static final String PROJECT_PROPERTIES_TAB = "//tr[@class='project-row'][%s]/descendant::a[@class='btn btn-dropdown']";*/
     private static final String DELETE_BUTTON = "//div[@class='dropdown-menu dropdown-menu-end show']/descendant::button[@class='Rl5f2G']";
     private static final By PROJECT_NAME_IN_PROJECTS_LIST = By.xpath("//tr[@class='project-row']/descendant::a[@class='defect-title']");
-    private String projectNumber;
-    private String searchProjectName;
+
     @FindBy(xpath = "//tr[@class='project-row']/descendant::a[@class='defect-title']")
     List<WebElement> namesList;
     Boolean exist;
@@ -81,13 +82,6 @@ public class ProjectsPage extends BaseMenuPage{
 
     }
 
-    public void setProjectNumber(String projectNumber) {
-        this.projectNumber = projectNumber;
-    }
-
-    public void setSearchProjectName(String searchProjectName) {
-        this.searchProjectName = searchProjectName;
-    }
 
     public ProjectsPage searchForProject(String searchProjectName){
         waitVisibilityOf(searchForProjectField).clear();
@@ -138,6 +132,10 @@ public class ProjectsPage extends BaseMenuPage{
 
     public void clickOnCreateProjectButtonInPopup(){
         createProjectButtonInPopup.click();
+    }
+
+    public void clickOnProject(){
+        waitVisibilityOf(projectNameOnProjectsList).click();
     }
 
 }

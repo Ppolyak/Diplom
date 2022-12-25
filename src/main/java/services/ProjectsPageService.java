@@ -46,4 +46,9 @@ public class ProjectsPageService {
       return projectsPage.checkIfProjectExistInProjectsList(searchProjectName);
     }
 
+    public RepositoryPage openProjectRepository(){
+        projectsPage.clickOnProject();
+        return new RepositoryPage();
+    }
+
 }
