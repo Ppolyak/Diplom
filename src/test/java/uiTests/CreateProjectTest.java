@@ -4,6 +4,7 @@ import models.Project;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.LoginPageService;
 import services.ProjectsPageService;
@@ -11,8 +12,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "pr312o";
-    private String projectCode = "daqaqa3";
+    private String projectName = "pououoo";
+    private String projectCode = "d9873";
 
     private String suiteName = "New suite";
     Project project = Project.builder()
@@ -20,11 +21,12 @@ public class CreateProjectTest extends BaseTest{
             .projectCode(projectCode)
             .build();
     private ProjectsPageService projectsPageService = new ProjectsPageService();
-    private LoginPageService loginPageService = new LoginPageService();
+
     private RepositoryPageService repositoryPageService = new RepositoryPageService();
 
     @BeforeClass(alwaysRun = true)
     public void login(){
+        LoginPageService loginPageService = new LoginPageService();
         String email = "pasha_polyakov8@mail.ru";
         String password = "Romehu82";
         User user = User.builder()
@@ -33,8 +35,6 @@ public class CreateProjectTest extends BaseTest{
                 .build();
         loginPageService.login(user);
     }
-
-
 
     @Test(priority = 1)
     public void crateNewProjectTest() {
@@ -47,7 +47,7 @@ public class CreateProjectTest extends BaseTest{
     }
 
     @Test(priority = 2)
-    public void searchForProject(){
+    public void searchForProjectTest() throws InterruptedException {
         String searchProjectName = projectName;
         projectsPageService.searchProject(searchProjectName);
         String expected = projectName;
@@ -57,7 +57,7 @@ public class CreateProjectTest extends BaseTest{
 
 
     @Test(priority = 5)
-    public void deleteProject(){
+    public void deleteProjectTest(){
         String searchProjectName = projectName;
         projectsPageService.searchProjectForDelete("pro123");
         projectsPageService.deleteProject();
@@ -74,7 +74,7 @@ public class CreateProjectTest extends BaseTest{
     }
 
     @Test(priority = 4)
-    public void addSuiteTest(){
+    public void addSuiteTest() throws InterruptedException {
         String successCreateSuiteMessage = "Suite was successfully created.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
@@ -84,7 +84,7 @@ public class CreateProjectTest extends BaseTest{
     }
 
     @Test(priority = 5)
-    public void deleteSuiteTest(){
+    public void deleteSuiteTest() throws InterruptedException {
         String successDeletedSuiteMessage = "Suite was successfully deleted.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
@@ -94,7 +94,7 @@ public class CreateProjectTest extends BaseTest{
     }
 
     @Test(priority = 6)
-    public void test(){
+    public void isMindMapViewOpenedTest() throws InterruptedException {
         projectsPageService.searchProject("sadasdasd");
         projectsPageService.openProjectRepository();
         repositoryPageService.chooseMindMapView();

@@ -2,6 +2,7 @@ package services;
 
 import io.qameta.allure.Step;
 import models.Project;
+import models.User;
 import pages.ProjectsPage;
 import pages.RepositoryPage;
 
@@ -9,6 +10,7 @@ public class ProjectsPageService {
 
     private static final String LOGIN_PAGE_URL = "https://app.qase.io/projects";
     protected ProjectsPage projectsPage = new ProjectsPage();
+    protected LoginPageService loginPageService = new LoginPageService();
 
     @Step("Create new project")
     public RepositoryPage createNewProject(Project project) {
@@ -28,8 +30,13 @@ public class ProjectsPageService {
         return new ProjectsPage();
     }
 
+    public ProjectsPage openPage(User user){
+        loginPageService.login(user);
+        return projectsPage.open();
+    }
+
     @Step("Search for project")
-    public ProjectsPage searchProject(String searchProjectName){
+    public ProjectsPage searchProject(String searchProjectName) throws InterruptedException {
         return projectsPage.searchForProject(searchProjectName);
     }
 

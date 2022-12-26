@@ -44,6 +44,11 @@ public class ProjectsPage extends BaseMenuPage {
     Boolean exist;
     String projectId;
 
+    public ProjectsPage open(){
+        driver.get("https://app.qase.io/projects");
+        return this;
+    }
+
     public boolean checkIfProjectExistInProjectsList(String searchProjectName) {
         waitVisibilityOf(projectNameInProjectsNamesList);
         ArrayList<String> names = new ArrayList<>();
@@ -84,10 +89,11 @@ public class ProjectsPage extends BaseMenuPage {
     }
 
 
-    public ProjectsPage searchForProject(String searchProjectName){
+    public ProjectsPage searchForProject(String searchProjectName) throws InterruptedException {
         waitVisibilityOf(searchForProjectField).clear();
         searchForProjectField.clear();
         searchForProjectField.sendKeys(searchProjectName);
+        Thread.sleep(1000);
         waitVisibilityOf(projectPropertiesTab);
         return this;
     }
