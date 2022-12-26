@@ -121,10 +121,10 @@ public class ProjectsPage extends BaseMenuPage{
         return this;
     }
 
-    public ProjectsPage fillProjectCodeField(String code) {
+    public ProjectsPage fillProjectCodeField(String projectCode) {
         projectCodeField.click();
         projectCodeField.clear();
-        projectCodeField.sendKeys(code);
+        projectCodeField.sendKeys(projectCode);
         return this;
     }
 

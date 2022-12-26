@@ -1,10 +1,8 @@
-package tests;
+package uiTests;
 
 import driver.DriverSingleton;
 import models.User;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import services.LoginPageService;

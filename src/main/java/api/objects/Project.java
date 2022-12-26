@@ -1,4 +1,4 @@
-package models;
+package api.objects;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class Project {
 
-    private String projectName;
-    private String projectCode;
+    private String code;
+    private String title;
 
 }
