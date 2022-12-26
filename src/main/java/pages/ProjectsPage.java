@@ -106,8 +106,6 @@ public class ProjectsPage extends BaseMenuPage{
         return this;
     }
 
-
-
     public String getProjectsText(){
         return waitVisibilityOf(projectsText).getText();
     }

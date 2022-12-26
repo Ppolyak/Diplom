@@ -30,4 +30,15 @@ public class RepositoryPageService {
         repositoryPage.deleteSuite(suiteName);
     }
 
+    public RepositoryPage chooseMindMapView(){
+        repositoryPage
+                .clickOnViewsButton()
+                .chooseOnMindMapView();
+        return new RepositoryPage();
+    }
+
+    public boolean isMindMapViewOpen(){
+        return repositoryPage.isMindMapViewOpen();
+    }
+
 }

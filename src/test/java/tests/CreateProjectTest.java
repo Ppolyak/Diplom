@@ -80,13 +80,21 @@ public class CreateProjectTest extends BaseTest{
     }
 
     @Test(priority = 6)
-    public void test(){
+    public void deleteSuiteTest(){
         String successDeletedSuiteMessage = "Suite was successfully deleted.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
         repositoryPageService.deleteSuite("newsuite");
         String actualResult = repositoryPageService.getSuccessDeletedPopUpMessage();
         Assert.assertEquals(actualResult,successDeletedSuiteMessage,"Suite was not deleted");
+    }
+
+    @Test(priority = 7)
+    public void test(){
+        projectsPageService.searchProject("sadasdasd");
+        projectsPageService.openProjectRepository();
+        repositoryPageService.chooseMindMapView();
+        Assert.assertTrue(repositoryPageService.isMindMapViewOpen(),"Mind Map view was not opened");
     }
 
 

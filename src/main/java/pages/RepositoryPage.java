@@ -24,6 +24,12 @@ public class RepositoryPage extends BasePage{
     private WebElement successDeletedMessagePopUp;
     @FindBy(xpath = "//button[@class='LzLtDS DRnS3P MBIQEc']")
     private WebElement deleteSuiteButtonInPopUp;
+    @FindBy(xpath = "//button[@class='EnBgyZ LzLtDS HRmKBJ MBIQEc']")
+    private WebElement viewsButton;
+    @FindBy(xpath = "//div[@class='xl1jSX']/following-sibling::div/div[contains(text(),'Mind')]")
+    private WebElement mindMapViewsButton;
+    @FindBy(xpath = "//div[@class='vc_P1V']")
+    private WebElement mindMapViewCanvas;
     @FindBy(xpath = "//div[@class='Hdl2GR']/descendant::span[@class='DvbSwG']")
     List<WebElement> suiteNamesList;
 
@@ -45,6 +51,20 @@ public class RepositoryPage extends BasePage{
 
     public RepositoryPage fillSuiteNameField(String suiteName){
         suiteNameField.sendKeys(suiteName);
+        return this;
+    }
+
+    public boolean isMindMapViewOpen(){
+        return waitVisibilityOf(mindMapViewCanvas).isDisplayed();
+    }
+
+    public RepositoryPage clickOnViewsButton(){
+        waitVisibilityOf(viewsButton).click();
+        return this;
+    }
+
+    public RepositoryPage chooseOnMindMapView(){
+        waitVisibilityOf(mindMapViewsButton).click();
         return this;
     }
 
