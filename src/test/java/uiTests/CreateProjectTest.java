@@ -20,9 +20,9 @@ public class CreateProjectTest extends BaseTest{
             .projectName(projectName)
             .projectCode(projectCode)
             .build();
-    private ProjectsPageService projectsPageService = new ProjectsPageService();
+    /*private ProjectsPageService projectsPageService = new ProjectsPageService();
 
-    private RepositoryPageService repositoryPageService = new RepositoryPageService();
+    private RepositoryPageService repositoryPageService = new RepositoryPageService();*/
 
     @BeforeClass(alwaysRun = true)
     public void login(){
@@ -38,6 +38,8 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 1)
     public void crateNewProjectTest() {
+        ProjectsPageService projectsPageService = new ProjectsPageService();
+        RepositoryPageService repositoryPageService = new RepositoryPageService();
         projectsPageService.createNewProject(project);
         String expected = projectCode + " repository";
         int length = expected.length();
@@ -48,6 +50,7 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 2)
     public void searchForProjectTest() throws InterruptedException {
+        ProjectsPageService projectsPageService = new ProjectsPageService();
         String searchProjectName = projectName;
         projectsPageService.searchProject(searchProjectName);
         String expected = projectName;
@@ -58,6 +61,7 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 5)
     public void deleteProjectTest(){
+        ProjectsPageService projectsPageService = new ProjectsPageService();
         String searchProjectName = projectName;
         projectsPageService.searchProjectForDelete("pro123");
         projectsPageService.deleteProject();
@@ -68,6 +72,7 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 7)
     public void searchForNotExistingProjectTest(){
+        ProjectsPageService projectsPageService = new ProjectsPageService();
         String searchProjectName = "123344";
         boolean expected = projectsPageService.checkIfProjectExistInProjectsList(searchProjectName);
         Assert.assertFalse(expected,"Project exist");
@@ -75,6 +80,8 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 4)
     public void addSuiteTest() throws InterruptedException {
+        ProjectsPageService projectsPageService = new ProjectsPageService();
+        RepositoryPageService repositoryPageService = new RepositoryPageService();
         String successCreateSuiteMessage = "Suite was successfully created.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
@@ -85,6 +92,8 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 5)
     public void deleteSuiteTest() throws InterruptedException {
+        ProjectsPageService projectsPageService = new ProjectsPageService();
+        RepositoryPageService repositoryPageService = new RepositoryPageService();
         String successDeletedSuiteMessage = "Suite was successfully deleted.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
@@ -95,6 +104,8 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 6)
     public void isMindMapViewOpenedTest() throws InterruptedException {
+        ProjectsPageService projectsPageService = new ProjectsPageService();
+        RepositoryPageService repositoryPageService = new RepositoryPageService();
         projectsPageService.searchProject("sadasdasd");
         projectsPageService.openProjectRepository();
         repositoryPageService.chooseMindMapView();

@@ -9,25 +9,19 @@ import org.openqa.selenium.opera.OperaDriver;
 
 public class WebDriverFactory {
 
-    public WebDriverFactory() {
+    private WebDriverFactory() {
     }
 
     public static WebDriver getWebDriver() {
         WebDriver driver = null;
-        switch (System.getProperty("browser", "chrome")) {
+        switch (System.getProperty("browser","chrome")) {
             case "firefox": {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             }
-            case "opera": {
-                WebDriverManager.operadriver().setup();
-                driver = new OperaDriver();
-                break;
-            }
             default: {
                 WebDriverManager.chromedriver().setup();
-
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--incognito");
                 driver = new ChromeDriver(chromeOptions);
