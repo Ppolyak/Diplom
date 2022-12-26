@@ -11,8 +11,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "pr3o";
-    private String projectCode = "da4q3";
+    private String projectName = "pr312o";
+    private String projectCode = "daqaqa3";
 
     private String suiteName = "New suite";
     Project project = Project.builder()
@@ -23,7 +23,7 @@ public class CreateProjectTest extends BaseTest{
     private LoginPageService loginPageService = new LoginPageService();
     private RepositoryPageService repositoryPageService = new RepositoryPageService();
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void login(){
         String email = "pasha_polyakov8@mail.ru";
         String password = "Romehu82";
@@ -59,7 +59,7 @@ public class CreateProjectTest extends BaseTest{
     @Test(priority = 5)
     public void deleteProject(){
         String searchProjectName = projectName;
-        projectsPageService.searchProject(projectName);
+        projectsPageService.searchProjectForDelete("pro123");
         projectsPageService.deleteProject();
         /*driver.navigate().refresh();*/
         boolean expected = projectsPageService.checkIfProjectExistInProjectsList(searchProjectName);
@@ -68,7 +68,7 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 7)
     public void searchForNotExistingProjectTest(){
-        String searchProjectName = "NOT_EXISTING_PROJECT_NAME";
+        String searchProjectName = "123344";
         boolean expected = projectsPageService.checkIfProjectExistInProjectsList(searchProjectName);
         Assert.assertFalse(expected,"Project exist");
     }
@@ -88,7 +88,7 @@ public class CreateProjectTest extends BaseTest{
         String successDeletedSuiteMessage = "Suite was successfully deleted.";
         projectsPageService.searchProject(projectName);
         projectsPageService.openProjectRepository();
-        repositoryPageService.deleteSuite("newsuite");
+        repositoryPageService.deleteSuite(suiteName);
         String actualResult = repositoryPageService.getSuccessDeletedPopUpMessage();
         Assert.assertEquals(actualResult,successDeletedSuiteMessage,"Suite was not deleted");
     }

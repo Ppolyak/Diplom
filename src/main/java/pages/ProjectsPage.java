@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class ProjectsPage extends BaseMenuPage{
+public class ProjectsPage extends BaseMenuPage {
 
     @FindBy(xpath = "//div[@class='col-lg-12']/h1")
     private WebElement projectsText;
@@ -35,13 +35,14 @@ public class ProjectsPage extends BaseMenuPage{
     private WebElement projectNameInProjectsNamesList;
     @FindBy(xpath = "//span[@class='no-project mt-4']")
     private WebElement noSuchProjectText;
-    /*private static final String PROJECT_PROPERTIES_TAB = "//tr[@class='project-row'][%s]/descendant::a[@class='btn btn-dropdown']";*/
+    private static final String PROJECT_PROPERTIES_TAB = "//tr[@class='project-row'][%s]/descendant::a[@class='btn btn-dropdown']";
     private static final String DELETE_BUTTON = "//div[@class='dropdown-menu dropdown-menu-end show']/descendant::button[@class='Rl5f2G']";
     private static final By PROJECT_NAME_IN_PROJECTS_LIST = By.xpath("//tr[@class='project-row']/descendant::a[@class='defect-title']");
 
     @FindBy(xpath = "//tr[@class='project-row']/descendant::a[@class='defect-title']")
     List<WebElement> namesList;
     Boolean exist;
+    String projectId;
 
     public boolean checkIfProjectExistInProjectsList(String searchProjectName) {
         waitVisibilityOf(projectNameInProjectsNamesList);
@@ -49,13 +50,13 @@ public class ProjectsPage extends BaseMenuPage{
         for (WebElement element : namesList) {
             names.add(element.getText());
         }
+        System.out.println(names);
 
-        for (int i = 0; i < names.size(); i++){
-            if (Objects.equals(names.get(i), searchProjectName)){
+        for (int i = 0; i < names.size(); i++) {
+            if (Objects.equals(names.get(i), searchProjectName)) {
                 exist = true;
                 break;
-            }
-            else {
+            } else {
                 exist = false;
             }
 
@@ -66,18 +67,18 @@ public class ProjectsPage extends BaseMenuPage{
         return exist;
     }
 
-    public boolean noSuchProjectTextIsDisplayed(){
+    public boolean noSuchProjectTextIsDisplayed() {
         return waitVisibilityOf(noSuchProjectText).isDisplayed();
     }
 
-    public void getAllProjectsNames(){
+    public void getAllProjectsNames() {
         waitVisibilityOf(projectPropertiesTab);
-        ArrayList <WebElement> namesList = new ArrayList <WebElement>();
+        ArrayList<WebElement> namesList = new ArrayList<WebElement>();
         driver.findElements(PROJECT_NAME_IN_PROJECTS_LIST).addAll(namesList);
         System.out.println(namesList);
     }
 
-    public String getProjectNameInProjectsList(){
+    public String getProjectNameInProjectsList() {
         return waitVisibilityOf(projectNameInProjectsNamesList).getText();
 
     }
@@ -87,35 +88,35 @@ public class ProjectsPage extends BaseMenuPage{
         waitVisibilityOf(searchForProjectField).clear();
         searchForProjectField.clear();
         searchForProjectField.sendKeys(searchProjectName);
-        /*waitVisibilityOf(projectPropertiesTab);*/
+        waitVisibilityOf(projectPropertiesTab);
         return this;
     }
 
-    public ProjectsPage clickOnProjectPropertiesTab(){
+    public ProjectsPage clickOnProjectPropertiesTab() {
         waitVisibilityOf(projectPropertiesTab).click();
         return this;
     }
 
-    public ProjectsPage clickOnDeleteButton(){
+    public ProjectsPage clickOnDeleteButton() {
         deleteButton.click();
         return this;
     }
 
-    public ProjectsPage clickOnDeleteProjectButton(){
+    public ProjectsPage clickOnDeleteProjectButton() {
         deleteProjectButton.click();
         return this;
     }
 
-    public String getProjectsText(){
+    public String getProjectsText() {
         return waitVisibilityOf(projectsText).getText();
     }
 
-    public ProjectsPage clickOnCreateNewProject(){
+    public ProjectsPage clickOnCreateNewProject() {
         createProjectButton.click();
         return this;
     }
 
-    public ProjectsPage fillProjectNameField(String projectName){
+    public ProjectsPage fillProjectNameField(String projectName) {
         projectNameField.clear();
         projectNameField.sendKeys(projectName);
         return this;
@@ -128,12 +129,31 @@ public class ProjectsPage extends BaseMenuPage{
         return this;
     }
 
-    public void clickOnCreateProjectButtonInPopup(){
+    public void clickOnCreateProjectButtonInPopup() {
         createProjectButtonInPopup.click();
     }
 
-    public void clickOnProject(){
+    public void clickOnProject() {
         waitVisibilityOf(projectNameOnProjectsList).click();
     }
+
+    public ProjectsPage searchForDeleteProject(String searchProjectName) {
+        waitVisibilityOf(projectNameInProjectsNamesList);
+        ArrayList<String> names = new ArrayList<>();
+        for (WebElement element : namesList) {
+            names.add(element.getText());
+        }
+        for (int i = 0; i < names.size(); i++) {
+            if (Objects.equals(names.get(i), searchProjectName)) {
+                projectId = String.valueOf(i + 1);
+                break;
+            }
+
+        }
+        driver.findElement(By.xpath(String.format(PROJECT_PROPERTIES_TAB,projectId))).click();
+        return this;
+    }
+
+
 
 }

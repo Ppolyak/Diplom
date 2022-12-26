@@ -23,7 +23,6 @@ public class ProjectsPageService {
     @Step("Delete project")
     public ProjectsPage deleteProject(){
         projectsPage
-                .clickOnProjectPropertiesTab()
                 .clickOnDeleteButton()
                 .clickOnDeleteProjectButton();
         return new ProjectsPage();
@@ -59,5 +58,11 @@ public class ProjectsPageService {
         projectsPage.clickOnProject();
         return new RepositoryPage();
     }
+
+    @Step("Open device properties for deleting")
+    public ProjectsPage searchProjectForDelete(String searchProjectName){
+        return projectsPage.searchForDeleteProject(searchProjectName);
+    }
+
 
 }
