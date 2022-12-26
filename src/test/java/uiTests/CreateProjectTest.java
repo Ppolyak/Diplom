@@ -1,7 +1,9 @@
 package uiTests;
 
 import models.Project;
+import models.User;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import services.LoginPageService;
 import services.ProjectsPageService;
@@ -9,19 +11,28 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "pro";
-    private String projectCode = "da923";
+    private String projectName = "pr3o";
+    private String projectCode = "da4q3";
 
     private String suiteName = "New suite";
     Project project = Project.builder()
             .projectName(projectName)
             .projectCode(projectCode)
             .build();
-
-
     private ProjectsPageService projectsPageService = new ProjectsPageService();
     private LoginPageService loginPageService = new LoginPageService();
     private RepositoryPageService repositoryPageService = new RepositoryPageService();
+
+    @BeforeClass
+    public void login(){
+        String email = "pasha_polyakov8@mail.ru";
+        String password = "Romehu82";
+        User user = User.builder()
+                .email(email)
+                .password(password)
+                .build();
+        loginPageService.login(user);
+    }
 
 
 

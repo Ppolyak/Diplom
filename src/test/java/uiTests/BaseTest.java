@@ -17,15 +17,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void startBrowser() {
-        String email = "pasha_polyakov8@mail.ru";
-        String password = "Romehu82";
-        User user = User.builder()
-                .email(email)
-                .password(password)
-                .build();
         driver = DriverSingleton.getInstance().getDriver();
-        loginPageService.login(user);
-
     }
 
     /*@AfterClass(alwaysRun = true)
