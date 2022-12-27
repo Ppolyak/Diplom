@@ -10,8 +10,8 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 public class ProjectTest {
 
-    private String code = "765qwe";
-    private String title = "newapi";
+    private String code = "765Wwe";
+    private String title = "new2Api";
     private String codeNotExist = "Not exciting code";
 
     @Test(priority = 1)
@@ -22,7 +22,7 @@ public class ProjectTest {
 
     @Test(priority = 4)
     public void getProjectByCode(){
-        int statusCode = new ProjectAdapter().getProjectByCode(code).getStatusCode();
+        int statusCode = new ProjectAdapter().getProjectByCode(code.toUpperCase()).getStatusCode();
         Assert.assertEquals(statusCode,HTTP_OK);
     }
 
