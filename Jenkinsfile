@@ -3,12 +3,7 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "maven"
-    }
-
-    parameters{
-        choice(choices: ['chrome'], name: 'browser')
-        choice(choices: ['src/test/resources/uiTests.xml', 'src/test/resources/apiTests.xml'], name: 'surefire')
+        maven "3.8.6"
     }
 
     stages {
@@ -18,10 +13,12 @@ pipeline {
                 git 'https://github.com/Ppolyak/Diplom'
 
                 // Run Maven on a Unix agent.
-                // "-Dmaven.test.failure.ignore=true -Dbrowser=${browser} -Dsurefire.suiteXmlFiles=${surefire.suiteXmlFiles} clean test"
+                // sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "-Dmaven.test.failure.ignore=true -Dbrowser=${browser} -Dsurefire.suiteXmlFiles=${surefire.suiteXmlFiles} clean test"
+                bat "mvn -Dmaven.test.failure.ignore=true -Dbrowser=${browser} -Dsurefire.suiteXmlFiles=${surefire.suiteXmlFiles} clean test"
+
+                //-Dbrowser=chrome -Dsurefire.suiteXmlFiles=src\test\resources\autopart-tests.xml clean test
             }
 
             post {
@@ -32,18 +29,19 @@ pipeline {
                 }
             }
         }
-        stage('Reporting') {
-         steps {
-             script {
-                     allure([
-                             includeProperties: false,
-                             jdk: '',
-                             properties: [],
-                             reportBuildPolicy: 'ALWAYS',
-                             results: [[path: 'target/allure-results']]
-                     ])
+
+        stage('Reporting ') {
+             steps {
+                script {
+                    allure([
+                         includeProperties: false,
+                         jdk: '',
+                         properties: [],
+                         reportBuildPolicy: 'ALWAYS',
+                         results: [[path: 'target/allure-results']]
+                    ])
+                }
              }
-         }
         }
     }
 }
