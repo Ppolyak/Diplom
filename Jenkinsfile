@@ -6,6 +6,12 @@ pipeline {
         maven "3.8.6"
     }
 
+    parameters{
+            choice(choices: ['chrome', 'firefox'], name: 'browser')
+            choice(choices: ['src/test/resources/uiTests.xml', 'src/test/resources/apiTests.xml'], name: 'surefire.suiteXmlFiles')
+        }
+
+
     stages {
         stage('Build') {
             steps {
