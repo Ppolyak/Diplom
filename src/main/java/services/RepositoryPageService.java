@@ -1,5 +1,6 @@
 package services;
 
+import api.objects.Suite;
 import io.qameta.allure.Step;
 import pages.RepositoryPage;
 
@@ -13,10 +14,10 @@ public class RepositoryPageService {
     }
 
     @Step
-    public RepositoryPage addSuite(String suiteName){
+    public RepositoryPage addSuite(Suite suite){
         repositoryPage
                 .clickOnAddSuiteButton()
-                .fillSuiteNameField(suiteName)
+                .fillSuiteNameField(suite.getSuiteName())
                 .clickOnCreateButton();
         return new RepositoryPage();
     }

@@ -17,16 +17,15 @@ public class LoginTest extends BaseTest{
     private LoginPageService loginPageService = new LoginPageService();
     private BaseMenuPageService baseMenuPageService = new BaseMenuPageService();
 
-    @Test
+    @Test(priority = 1)
     public void loginTest(){
         String actualText = loginPageService.login(user).getProjectsText();
         String expectedText = "Projects";
         Assert.assertEquals(actualText,expectedText, "Texts not compares");
     }
 
-    @Test
+    @Test(priority = 2)
     public void signOutTest(){
-        loginPageService.login(user);
         baseMenuPageService.signOut();
         boolean isLoginButtonDisplayed = loginPageService.checkIfLoginButtonExist();
         Assert.assertTrue(isLoginButtonDisplayed);

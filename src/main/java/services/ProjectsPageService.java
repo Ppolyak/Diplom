@@ -30,8 +30,7 @@ public class ProjectsPageService {
         return new ProjectsPage();
     }
 
-    public ProjectsPage openPage(User user){
-        loginPageService.login(user);
+    public ProjectsPage openPage(){
         return projectsPage.open();
     }
 
