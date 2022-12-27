@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Log4j2
 public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//input[@id='inputEmail']")
@@ -24,6 +26,7 @@ public class LoginPage extends BasePage{
     public LoginPage fillEmailField(String email){
         waitVisibilityOf(emailField);
         emailField.clear();
+        log.info("Entering email");
         emailField.sendKeys(email);
         return this;
     }
