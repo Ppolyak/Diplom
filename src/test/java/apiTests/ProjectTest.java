@@ -10,26 +10,24 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 public class ProjectTest {
 
-    private String code;
-    private String title;
+    private String code = "765qwe";
+    private String title = "newapi";
+    private String codeNotExist = "Not exciting code";
 
-    @Test
+    @Test(priority = 1)
     public void getAllProjectsTest(){
         int statusCode = new ProjectAdapter().getAllProjects().getStatusCode();
         Assert.assertEquals(statusCode,HTTP_OK);
     }
 
-    @Test
+    @Test(priority = 4)
     public void getProjectByCode(){
-        code = "WQEQWEAAA";
         int statusCode = new ProjectAdapter().getProjectByCode(code).getStatusCode();
         Assert.assertEquals(statusCode,HTTP_OK);
     }
 
-    @Test
+    @Test(priority = 2)
     public void createNewProjectTest(){
-        code = "newcode1";
-        title = "Name pr3";
         Project project = Project.builder()
                 .code(code)
                 .title(title)
@@ -38,18 +36,16 @@ public class ProjectTest {
         Assert.assertEquals(statusCode,HTTP_OK);
     }
 
-    @Test
+    @Test(priority = 5)
     public void deleteProjectByCode(){
-        code = "newcode";
         int statusCode = new ProjectAdapter().deleteProjectByCode(code.toUpperCase()).getStatusCode();
         Assert.assertEquals(statusCode,HTTP_OK);
     }
 
-    @Test
+    @Test(priority = 3)
     public void getNotExistingProjectByCode(){
-        code = "Not exciting code";
         String expectedBody = "{\"status\":false,\"errorMessage\":\"Project not found\"}";
-        String actualBody = new ProjectAdapter().getProjectByCode(code).asString();
+        String actualBody = new ProjectAdapter().getProjectByCode(codeNotExist).asString();
         Assert.assertEquals(expectedBody,actualBody,"Error");
     }
 
