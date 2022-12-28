@@ -14,11 +14,12 @@ public class LoginTest extends BaseTest{
             .email(email)
             .password(password)
             .build();
-    private LoginPageService loginPageService = new LoginPageService();
-    private BaseMenuPageService baseMenuPageService = new BaseMenuPageService();
+    private LoginPageService loginPageService;
+    private BaseMenuPageService baseMenuPageService;
 
     @Test(priority = 1)
     public void loginTest(){
+        loginPageService = new LoginPageService();
         String actualText = loginPageService.login(user).getProjectsText();
         String expectedText = "Projects";
         Assert.assertEquals(actualText,expectedText, "Texts not compares");
@@ -26,6 +27,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 2)
     public void signOutTest(){
+        baseMenuPageService = new BaseMenuPageService();
         baseMenuPageService.signOut();
         boolean isLoginButtonDisplayed = loginPageService.checkIfLoginButtonExist();
         Assert.assertTrue(isLoginButtonDisplayed);

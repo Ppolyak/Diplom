@@ -14,8 +14,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "p6754o1s";
-    private String projectCode = "dqaw3";
+    private String projectName = "saqew";
+    private String projectCode = "dcsaz";
 
     private String suiteName = "New suite";
     private String suiteName2 = "New suite2";
@@ -24,9 +24,9 @@ public class CreateProjectTest extends BaseTest{
             .projectName(projectName)
             .projectCode(projectCode)
             .build();
-    private ProjectsPageService projectsPageService = new ProjectsPageService();
+    private ProjectsPageService projectsPageService;
 
-    private RepositoryPageService repositoryPageService = new RepositoryPageService();
+    private RepositoryPageService repositoryPageService;
 
     @BeforeClass(alwaysRun = true)
     public void login(){
@@ -42,6 +42,8 @@ public class CreateProjectTest extends BaseTest{
 
     @Test(priority = 3,enabled = true)
     public void crateNewProjectTest() {
+        repositoryPageService = new RepositoryPageService();
+        projectsPageService = new ProjectsPageService();
         projectsPageService.createNewProject(project);
         String expected = projectCode + " repository";
         int length = expected.length();

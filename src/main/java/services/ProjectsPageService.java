@@ -9,11 +9,12 @@ import pages.RepositoryPage;
 public class ProjectsPageService {
 
     private static final String LOGIN_PAGE_URL = "https://app.qase.io/projects";
-    protected ProjectsPage projectsPage = new ProjectsPage();
-    protected LoginPageService loginPageService = new LoginPageService();
+    protected ProjectsPage projectsPage;
+
 
     @Step("Create new project")
     public RepositoryPage createNewProject(Project project) {
+        projectsPage = new ProjectsPage();
         projectsPage
                 .clickOnCreateNewProject()
                 .fillProjectNameField(project.getProjectName())

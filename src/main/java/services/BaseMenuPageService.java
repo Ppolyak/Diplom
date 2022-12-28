@@ -5,12 +5,13 @@ import pages.LoginPage;
 
 public class BaseMenuPageService {
 
-    protected BaseMenuPage baseMenuPage = new BaseMenuPage();
+    protected BaseMenuPage baseMenuPage;
     public void openProfileProperties(){
         baseMenuPage.clickOnProfileIcon();
     }
 
     public LoginPage signOut(){
+        baseMenuPage = new BaseMenuPage();
         baseMenuPage
                 .clickOnProfileIcon()
                 .clickOnSignOutButton();
