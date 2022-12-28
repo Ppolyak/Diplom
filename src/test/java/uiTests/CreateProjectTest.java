@@ -14,8 +14,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "saqew";
-    private String projectCode = "dcsaz";
+    private String projectName = "pqowie";
+    private String projectCode = "zmxncb";
 
     private String suiteName = "New suite";
     private String suiteName2 = "New suite2";

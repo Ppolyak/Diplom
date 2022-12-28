@@ -10,8 +10,8 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 public class ProjectTest {
 
-    private String code = "765Wwe";
-    private String title = "new2Api";
+    private String code = "UYEasd";
+    private String title = "kajsh";
     private String codeNotExist = "Not exciting code";
 
     @Test(priority = 1)
