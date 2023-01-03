@@ -13,7 +13,7 @@ import java.util.Objects;
 public abstract class BasePage {
 
     protected WebDriver driver = DriverSingleton.getInstance().getDriver();
-    protected final static int WAIT_TIMEOUT_SECONDS = 10;
+    protected static final int WAIT_TIMEOUT_SECONDS = 10;
 
     protected BasePage() {
         PageFactory.initElements(driver, this);
@@ -29,16 +29,4 @@ public abstract class BasePage {
                 .elementToBeClickable(element));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BasePage basePage = (BasePage) o;
-        return driver.equals(basePage.driver);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(driver);
-    }
 }
