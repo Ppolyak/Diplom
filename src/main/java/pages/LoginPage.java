@@ -18,8 +18,6 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//div[@data-qase-test='login-error']")
     private WebElement credentialsDoesNotMatchText;
 
-    /*private static final String LOGIN_PAGE_URL = "https://app.qase.io/login";*/
-
     public String getCredentialsDoesNotMatchText(){
         return waitVisibilityOf(credentialsDoesNotMatchText).getText();
     }
@@ -31,16 +29,16 @@ public class LoginPage extends BasePage{
 
     public LoginPage fillEmailField(String email){
         waitVisibilityOf(emailField);
-        emailField.clear();
         log.info("Entering email");
+        emailField.clear();
         emailField.sendKeys(email);
         return this;
     }
 
     public LoginPage fillPasswordField(String password){
         waitVisibilityOf(passwordField);
-        passwordField.clear();
         log.info("Entering password");
+        passwordField.clear();
         passwordField.sendKeys(password);
         return this;
     }
