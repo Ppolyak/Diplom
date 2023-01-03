@@ -5,7 +5,6 @@ import models.Project;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import services.LoginPageService;
@@ -14,8 +13,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "pqowie";
-    private String projectCode = "zmxncb";
+    private String projectName = "pqoie";
+    private String projectCode = "z1ncb";
 
     private String suiteName = "New suite";
     private String suiteName2 = "New suite2";

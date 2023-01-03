@@ -92,6 +92,7 @@ public class ProjectsPage extends BaseMenuPage {
     public ProjectsPage searchForProject(String searchProjectName) throws InterruptedException {
         waitVisibilityOf(searchForProjectField).clear();
         searchForProjectField.clear();
+        searchForProjectField.clear();
         searchForProjectField.sendKeys(searchProjectName);
         Thread.sleep(1000);
         waitVisibilityOf(projectPropertiesTab);
