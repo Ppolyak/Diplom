@@ -15,8 +15,14 @@ public class LoginPage extends BasePage{
     private WebElement rememberMeCheckBox;
     @FindBy(xpath = "//button[@id='btnLogin']")
     private WebElement loginButton;
+    @FindBy(xpath = "//div[@data-qase-test='login-error']")
+    private WebElement credentialsDoesNotMatchText;
 
     /*private static final String LOGIN_PAGE_URL = "https://app.qase.io/login";*/
+
+    public String getCredentialsDoesNotMatchText(){
+        return waitVisibilityOf(credentialsDoesNotMatchText).getText();
+    }
 
     public LoginPage openPage(String url){
         driver.get(url);

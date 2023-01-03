@@ -34,4 +34,15 @@ public class LoginTest extends BaseTest{
 
     }
 
+    @Test (priority = 3)
+    public void failedLoginTest(){
+        loginPageService.login(User.builder()
+                .email("sadasdasd@mail.ru")
+                .password("asdasdasd")
+                .build());
+        String actual = loginPageService.credentialsDoesNotMatchText();
+        String expected = "These credentials do not match our records.";
+        Assert.assertEquals(actual,expected,"Failed");
+    }
+
 }

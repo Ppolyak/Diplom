@@ -40,7 +40,7 @@ public class CreateProjectTest extends BaseTest{
         loginPageService.login(user);
     }
 
-    @Test(priority = 3,enabled = true)
+    @Test(priority = 4,enabled = true)
     public void crateNewProjectTest() {
         repositoryPageService = new RepositoryPageService();
         projectsPageService = new ProjectsPageService();
@@ -52,7 +52,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertEquals(actual,expected.toLowerCase(),"Not equals");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void searchForProjectTest() throws InterruptedException {
         projectsPageService.openPage();
         String searchProjectName = projectName;
@@ -63,7 +63,7 @@ public class CreateProjectTest extends BaseTest{
     }
 
 
-    @Test(priority = 9)
+    @Test(priority = 10)
     public void deleteProjectTest() throws InterruptedException {
         String searchProjectName = projectName;
         projectsPageService.openPage();
@@ -75,14 +75,14 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertFalse(expected, "Project was not deleted");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void searchForNotExistingProjectTest(){
         String searchProjectName = "123344";
         boolean expected = projectsPageService.openPage().checkIfProjectExistInProjectsList(searchProjectName);
         Assert.assertFalse(expected,"Project exist");
     }
 
-    @Test(dataProvider = "Add several suites", priority = 6)
+    @Test(dataProvider = "Add several suites", priority = 7)
     public void addSeveralSuitesTest(String suiteName) throws InterruptedException {
         String successCreateSuiteMessage = "Suite was successfully created.";
         projectsPageService.openPage();
@@ -95,7 +95,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertEquals(actualResult,successCreateSuiteMessage,"Suite was not added");
     }
 
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void deleteSuiteTest() throws InterruptedException {
         String successDeletedSuiteMessage = "Suite was successfully deleted.";
         projectsPageService.openPage();
@@ -106,7 +106,7 @@ public class CreateProjectTest extends BaseTest{
         Assert.assertEquals(actualResult,successDeletedSuiteMessage,"Suite was not deleted");
     }
 
-    @Test(priority = 8)
+    @Test(priority = 9)
     public void isMindMapViewOpenedTest() throws InterruptedException {
         projectsPageService.openPage();
         projectsPageService.searchProject(projectName);

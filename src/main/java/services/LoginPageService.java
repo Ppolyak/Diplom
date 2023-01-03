@@ -25,4 +25,8 @@ public class LoginPageService {
         return loginPage.isLoginButtonVisible();
     }
 
+    public String credentialsDoesNotMatchText(){
+        return loginPage.getCredentialsDoesNotMatchText();
+    }
+
 }
