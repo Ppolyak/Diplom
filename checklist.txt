@@ -1,0 +1,17 @@
+API:
+1. Check that status code is 200 while get all projects
+2. Check that status code is 200 on successful creating new project
+3. Compare error message while get request with not existing project code
+4. Verify that status code is 200 on getting project by code
+5. Verify that status code is 200 on deleting project by code
+UI:
+1. Check log in with valid email and password
+2. Check sign out functionality
+3. Check log in with not registered email and password
+4. Check possibility to create new project
+5. Check possibility to search for existing project
+6. Check possibility to search for not existing project
+7. Check possibility to add several suites in a row
+8. Check possibility to delete suite
+9. Check possibility to set map view for project
+10. CHeck possibility to delete project
