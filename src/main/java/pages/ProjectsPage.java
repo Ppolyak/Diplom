@@ -11,6 +11,8 @@ import java.util.Objects;
 
 public class ProjectsPage extends BaseMenuPage {
 
+    private static final String PROJECT_PROPERTIES_TAB = "//tr[@class='project-row'][%s]/descendant::a[@class='btn btn-dropdown']";
+    private static final By PROJECT_NAME_IN_PROJECTS_LIST = By.xpath("//tr[@class='project-row']/descendant::a[@class='defect-title']");
     @FindBy(xpath = "//div[@class='col-lg-12']/h1")
     private WebElement projectsText;
     @FindBy(xpath = "//span[@class='UdZcu9']")
@@ -35,9 +37,6 @@ public class ProjectsPage extends BaseMenuPage {
     private WebElement projectNameInProjectsNamesList;
     @FindBy(xpath = "//span[@class='no-project mt-4']")
     private WebElement noSuchProjectText;
-    private static final String PROJECT_PROPERTIES_TAB = "//tr[@class='project-row'][%s]/descendant::a[@class='btn btn-dropdown']";
-    private static final String DELETE_BUTTON = "//div[@class='dropdown-menu dropdown-menu-end show']/descendant::button[@class='Rl5f2G']";
-    private static final By PROJECT_NAME_IN_PROJECTS_LIST = By.xpath("//tr[@class='project-row']/descendant::a[@class='defect-title']");
 
     @FindBy(xpath = "//tr[@class='project-row']/descendant::a[@class='defect-title']")
     List<WebElement> namesList;
