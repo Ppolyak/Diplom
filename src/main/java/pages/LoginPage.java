@@ -40,6 +40,7 @@ public class LoginPage extends BasePage{
     public LoginPage fillPasswordField(String password){
         waitVisibilityOf(passwordField);
         passwordField.clear();
+        log.info("Entering password");
         passwordField.sendKeys(password);
         return this;
     }
