@@ -6,7 +6,7 @@ import pages.RepositoryPage;
 
 public class RepositoryPageService {
 
-    protected RepositoryPage repositoryPage;
+    private RepositoryPage repositoryPage;
 
     @Step("Get repository name")
     public String getRepositoryName(){

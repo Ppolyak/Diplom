@@ -98,11 +98,6 @@ public class ProjectsPage extends BaseMenuPage {
         return this;
     }
 
-    public ProjectsPage clickOnProjectPropertiesTab() {
-        waitVisibilityOf(projectPropertiesTab).click();
-        return this;
-    }
-
     public ProjectsPage clickOnDeleteButton() {
         deleteButton.click();
         return this;

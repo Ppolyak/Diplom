@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class RepositoryPage extends BasePage{
 
+    private static final String SUITE_NAME_WITH_POSITION = ("//div[@id='suitecases-container']/descendant::div[@class='ioDlVH'][%s]/descendant::i[@class='far fa-trash']");
     @FindBy(xpath = "//h1[@class='VqrSGU']/self::*")
     private WebElement repository;
     @FindBy(xpath = "//a[@id='create-suite-button']")
@@ -33,9 +34,7 @@ public class RepositoryPage extends BasePage{
     @FindBy(xpath = "//div[@class='Hdl2GR']/descendant::span[@class='DvbSwG']")
     List<WebElement> suiteNamesList;
 
-    private static final String SUITE_NAME_WITH_POSITION = ("//div[@id='suitecases-container']/descendant::div[@class='ioDlVH'][%s]/descendant::i[@class='far fa-trash']");
-    ////h1[@class='VqrSGU'] | not//span[@class='zttQ3P']
-    int suitePosition;
+    private int suitePosition;
     public void setSuitePosition(int suitePosition) {
         this.suitePosition = suitePosition;
     }

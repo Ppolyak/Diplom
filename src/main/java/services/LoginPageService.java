@@ -8,7 +8,7 @@ import pages.ProjectsPage;
 public class LoginPageService {
 
     private static final String LOGIN_PAGE_URL = "https://app.qase.io/login";
-    protected LoginPage loginPage;
+    private LoginPage loginPage;
 
     @Step("Login")
     public ProjectsPage login(User user){

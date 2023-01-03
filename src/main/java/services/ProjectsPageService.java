@@ -9,7 +9,7 @@ import pages.RepositoryPage;
 public class ProjectsPageService {
 
     private static final String LOGIN_PAGE_URL = "https://app.qase.io/projects";
-    protected ProjectsPage projectsPage;
+    private ProjectsPage projectsPage;
 
 
     @Step("Create new project")

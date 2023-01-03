@@ -5,7 +5,7 @@ import pages.LoginPage;
 
 public class BaseMenuPageService {
 
-    protected BaseMenuPage baseMenuPage;
+    private BaseMenuPage baseMenuPage;
     public void openProfileProperties(){
         baseMenuPage.clickOnProfileIcon();
     }
