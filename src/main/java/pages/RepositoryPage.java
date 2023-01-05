@@ -15,7 +15,7 @@ public class RepositoryPage extends BasePage{
     private WebElement repository;
     @FindBy(xpath = "//a[@id='create-suite-button']")
     private WebElement addSuiteButton;
-    @FindBy(xpath = "//input[@id='name']")
+    @FindBy(xpath = "//input[@id='title']")
     private WebElement suiteNameField;
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement createSuiteButton;

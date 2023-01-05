@@ -13,8 +13,8 @@ import services.RepositoryPageService;
 
 public class CreateProjectTest extends BaseTest{
 
-    private String projectName = "pqoie";
-    private String projectCode = "z1ncb";
+    private String projectName = "endnew";
+    private String projectCode = "ewas321";
 
     private String suiteName = "New suite";
     private String suiteName2 = "New suite2";
