@@ -19,7 +19,7 @@ public class CreateProjectTest extends BaseTest{
     private String suiteName = "New suite";
     private String suiteName2 = "New suite2";
     private String suiteName3 = "New suite3";
-    Project project = Project.builder()
+    private Project project = Project.builder()
             .projectName(projectName)
             .projectCode(projectCode)
             .build();
